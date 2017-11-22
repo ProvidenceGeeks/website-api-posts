@@ -2,8 +2,8 @@ package com.providencegeeks.service;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.providencegeeks.config.EventConfig;
-import com.providencegeeks.model.Event;
+import com.providencegeeks.config.BlogPostConfig;
+import com.providencegeeks.model.BlogPost;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -13,24 +13,22 @@ import java.util.List;
 public class BlogPostDaoImpl implements BlogPostDao {
 
   private final ObjectMapper objectMapper;
-  private final EventConfig eventConfig;
+  private final BlogPostConfig blogPostConfig;
 
-  public EventDaoImpl(ObjectMapper objectMapper, EventConfig eventConfig) {
+  public BlogPostDaoImpl(ObjectMapper objectMapper, BlogPostConfig blogPostConfig) {
     this.objectMapper = objectMapper;
-    this.eventConfig = eventConfig;
+    this.blogPostConfig = blogPostConfig;
   }
 
   @Override
-  public List<Event> getEvents() {
+  public List<BlogPost> getBlogPosts() {
     try {
       return objectMapper.readValue(
-        eventConfig.getFileUri().toURL(),
-        new TypeReference<List<Event>>(){});
+        blogPostConfig.getFileUri().toURL(),
+        new TypeReference<List<BlogPost>>(){});
     } catch (IOException e) {
       e.printStackTrace();
       throw new RuntimeException(e);
     }
-
   }
-
 }
