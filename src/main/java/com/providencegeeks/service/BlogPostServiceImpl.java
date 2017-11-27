@@ -16,7 +16,8 @@ public class BlogPostServiceImpl implements BlogPostService {
 
   @Override
   public List<BlogPost> getBlogPostsSortedByTime() {
-    //return blogPostDao.getBlogPosts().stream().collect(Collectors.toList());
-    return blogPostDao.getBlogPosts().stream().sorted((o1, o2) -> BlogPost.DateComparator.compare(o1, o2)).collect(Collectors.toList());
+    return blogPostDao.getBlogPosts().stream()
+      .sorted((o1, o2) -> BlogPost.DateComparator.compare(o1, o2))
+      .collect(Collectors.toList());
   }
 }

@@ -233,7 +233,7 @@ public class BlogPost implements Comparable<BlogPost> {
 
   @Override
   public int compareTo(BlogPost other) {
-    SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy hh:mm");
+    SimpleDateFormat df = new SimpleDateFormat("YYYY-mm-dd'T'hh:MM:ss");
     df.setTimeZone(TimeZone.getTimeZone("UTC"));
 
     try {
@@ -250,7 +250,7 @@ public class BlogPost implements Comparable<BlogPost> {
   public static Comparator<BlogPost> DateComparator = new Comparator<BlogPost>() {
     @Override
     public int compare(BlogPost post1, BlogPost post2) {
-      return post1.compareTo(post2);
+      return post2.compareTo(post1);
     }
   };
 }
