@@ -3,8 +3,13 @@ package com.providencegeeks.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.util.Date;
+import java.util.TimeZone;
+import java.text.SimpleDateFormat;
+import java.util.Comparator;
+
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class BlogPost {
+public class BlogPost implements Comparable<BlogPost> {
 
   @JsonProperty("id")
   private String id;
@@ -225,4 +230,27 @@ public class BlogPost {
   public void setFormat(String format) {
     this.format = format;
   }
+
+  @Override
+  public int compareTo(BlogPost other) {
+    SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy hh:mm");
+    df.setTimeZone(TimeZone.getTimeZone("UTC"));
+
+    try {
+      Date date1 = df.parse(this.getDate());
+      Date date2 = df.parse(other.getDate());
+
+      return date1.compareTo(date2);
+    } catch(Exception e) {
+      System.out.println(e.getMessage());
+      return 0;
+    }
+  }
+
+  public static Comparator<BlogPost> DateComparator = new Comparator<BlogPost>() {
+    @Override
+    public int compare(BlogPost post1, BlogPost post2) {
+      return post1.compareTo(post2);
+    }
+  };
 }
