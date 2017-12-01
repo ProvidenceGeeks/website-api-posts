@@ -25,7 +25,6 @@ public class BlogPostDaoImplTest {
 
   @Before
   public void setUp() throws Exception {
-
     Mockito.when(blogPostConfig.getFileUri())
       .then(i -> getClass().getResource("/wordpress.json").toURI());
   }

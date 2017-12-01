@@ -71,6 +71,12 @@ public class BlogPost implements Comparable<BlogPost> {
   @JsonProperty("format")
   private String format;
 
+  @JsonProperty("author_name")
+  private String author_name;
+
+  @JsonProperty("media_details")
+  private MediaDetails media_details;
+
   public String getId() {
     return id;
   }
@@ -229,6 +235,20 @@ public class BlogPost implements Comparable<BlogPost> {
 
   public void setFormat(String format) {
     this.format = format;
+  }
+
+  public String getAuthor_name() { return author_name; }
+
+  public void setAuthor_name(String author_name) {
+    this.author_name = author_name;
+  }
+
+  public MediaDetails getMedia_details() {
+    return media_details;
+  }
+
+  public void setMedia_details(MediaDetails media_details) {
+    this.media_details = media_details;
   }
 
   @Override
