@@ -18,3 +18,4 @@ Please review the local development environment [steps](https://github.com/Provi
 For more information, visit [Posts API](https://github.com/ProvidenceGeeks/website-docs/wiki/API-Specification#posts)
 
 ## Release Management
+Release management and procedure docs can be found in the [wiki](https://github.com/ProvidenceGeeks/website-docs/wiki/Release-Management)
